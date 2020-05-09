@@ -24,7 +24,7 @@
 
 		//Option 1: node liri.js concert-this
 		case "concert-this":
-			//Call Function for generating tweets from Twitter API
+			//Call Function for generating artist from Bandsintown API
 			concertThis();
 			break;
 
@@ -63,24 +63,36 @@
     
     //concertThis Function
     function concertThis() {
-            //Logging a separator to place the results in
-            console.log("\n === HERE ARE YOUR RESULTS ===\n");
+        //Logging a separator to place the results in
+        console.log("\n === HERE ARE YOUR RESULTS ===\n");
 
+        //Get the user input for the artist name and store it in a new variable
         var artistName = inputTitle;
+
+        //Store the artist name as a parameter for the search:
+		var params = artistName;
+
+        //Variable for Bandsintown API
+        var queryURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
 
 
         //Search Bandsintown API
-		var queryURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
-
-			//If there is an error, log the error
+		axios(queryURL, function (error, response, body) {
+            
+            //If there is an error, log the error
 			if (err) {
 				return console.log('Error occurred: ' + err);
 			} else {
-				//Otherwise, log the song information:
-				var output = 	" ---- You searched for: " + params.toUpperCase() + " ----" +
-								"\n   Venue Name: " + data.tracks.items[0].album.artists[0].name +
-								"\n   Venue Location: " + params +
-								"\n   Album: " + 
+                
+                //Parse JSON data into new Variable
+				var data = JSON.parse(body);
+
+                //Log the artist information
+				var output =	" ---- You searched for: " + params.toUpperCase() + " ----" +
+								"\n   Venue Name: " + data.venue.name +
+								"\n   Venue City: " + data.venue.city +
+								"\n   Venue Location: " + data.venue.location +
+								"\n   Date: " + moment(data.datetime.format("MM/DD/YYYY")) + 
 								"\n --------------------------------" +
 								"\n";
 
@@ -88,9 +100,10 @@
 
 				//BONUS Append data to log.txt file
 				appendToLogFile(output);
-			}
-	};
-	
+
+			} 
+		});
+    } 
     
     //spotifyThis Function
 	function spotifyThis() {
@@ -190,7 +203,7 @@
 		});
     } 
     
-    	//doWhatItSays Function
+    //doWhatItSays Function
 	function doWhatItSays() {
 
 		//Use fs to read the random file
@@ -211,8 +224,8 @@
 					switch (randomInputCommand) {
 
 						//Option 1: node liri.js my-tweets
-						case "my-tweets":
-							//Call Function for generating tweets from Twitter API
+						case "concert-this":
+							//Call Function for generating 
 							concertThis();
 							break;
 
