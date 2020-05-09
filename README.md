@@ -29,6 +29,10 @@ This node application at it's core is a simple SWITCH CASE statement.  From the 
       - No search filter accepted, just call liri.js with this command and it will read in a search term from the file "random.txt" and search Spotify for the term that was read into the file.  Random.txt is structured as a comma delimited file so the search term is always index 1 on the array created using the javascript "split()" function.  
       
  All entered commands are logged to the comma delimited log.txt file so that it can be easily read into an array later if desired.  You'll need to strip off the trailing ",".  
+
+ #### BONUS
+
+* In addition to logging the data to your terminal/bash window, output the data to a .txt file called `log.txt`.
  
  
 #### Dependencies:
@@ -38,17 +42,31 @@ This node application at it's core is a simple SWITCH CASE statement.  From the 
 - axios
 - node-spotify-api
 
-#### BONUS
-
-* In addition to logging the data to your terminal/bash window, output the data to a .txt file called `log.txt`.
-
-#### Screenshots
+##### Screenshots
 
 ###### Concert-This:
 
-Successful BandsInTown API Call:
+Successful BandsInTown API Call:  
 ![concert-this](./images/concert-this.png)
 
+###### Spotify-This-Song:  
 
+Successful Spotify API Call:  
+![spotify-this-song](./images/spotify-this-song.png)  
+
+###### Spotify-This-Song (No Song):
+
+The "no result/default case when leaving song field blank:  
+![spotify-no-song](./images/spotify-no-song.png)
+
+###### Movie-This:
+
+Successful OMDB API Call:  
+![movie-this](./images/movie-this.png)
+
+###### Do-What-It-Says:
+
+Successful read of random.txt and Spotify API call using text in file:  
+![do-what-it-says](./images/do-what-it-says.png)
 
 
