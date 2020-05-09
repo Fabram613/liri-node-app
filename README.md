@@ -1,4 +1,4 @@
-# LIRI-node-app
+# LIRI-Node-App
 
 LIRI: The Language Interpretation and Recognition Interface.
 
@@ -23,10 +23,10 @@ This node application at it's core is a simple SWITCH CASE statement.  From the 
       - Will call the Spotify API and return the first result matching the song you entered.  
       
   * "*movie-this*" *Movie*
-      - Will call the IMBD API and display the details of the movie you searched for.  
+      - Will call the OMBD API and display the details of the movie you searched for.  
     
   * "*do-what-it-says*" n/a
-      - No search filter accepted, just call liri.js with this command and it will read in a search term from the file "random.txt" and search Spotify for the term that was read into the file.  Random.txt is structured as a comma delimited file so the search term is always idex 1 on the array created using the javascript "split()" function.  
+      - No search filter accepted, just call liri.js with this command and it will read in a search term from the file "random.txt" and search Spotify for the term that was read into the file.  Random.txt is structured as a comma delimited file so the search term is always index 1 on the array created using the javascript "split()" function.  
       
  All entered commands are logged to the comma delimited log.txt file so that it can be easily read into an array later if desired.  You'll need to strip off the trailing ",".  
  
@@ -46,7 +46,8 @@ This node application at it's core is a simple SWITCH CASE statement.  From the 
 
 ###### Concert-This:
 
-![concert-this](images/concert-this.jpg)
+Successful BandsInTown API Call:
+![concert-this](./images/concert-this.png)
 
 
 
