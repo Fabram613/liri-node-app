@@ -14,7 +14,7 @@
     //INPUT VARIABLES
     //===============
     var inputCommand = process.argv[2];
-    var inputTitle = process.argv[3];
+    var inputTitle = process.argv.slice(3).join(" ");
 
 //MAIN PROCESS
 //============    
@@ -66,18 +66,18 @@
         //Logging a separator to place the results in
         console.log("\n === HERE ARE YOUR RESULTS ===\n");
 
+        //Creating a new variable for Bandsintown API
+        var queryURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
+
         //Get the user input for the artist name and store it in a new variable
         var artistName = inputTitle;
 
         //Store the artist name as a parameter for the search:
 		var params = artistName;
 
-        //Variable for Bandsintown API
-        var queryURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
-
-
         //Search Bandsintown API
-		axios(queryURL, function (error, response, body) {
+		axios.get(queryURL).then(
+            function (err, response, body) {
             
             //If there is an error, log the error
 			if (err) {
@@ -170,7 +170,8 @@
 		var params = movieTitle;
 
 		//Use request to retrieve the information from OMDB api
-		axios("http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy", function (error, response, body) {
+		axios.get("http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy").then(
+            function (error, response, body) {
 
 			//If there is no error, return information
 			if (!error && response.statusCode == 200) {
