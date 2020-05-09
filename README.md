@@ -32,6 +32,7 @@ This node application at it's core is a simple SWITCH CASE statement.  From the 
  
  
 #### Dependencies:
+
 - fs
 - moment
 - axios
@@ -42,5 +43,11 @@ This node application at it's core is a simple SWITCH CASE statement.  From the 
 * In addition to logging the data to your terminal/bash window, output the data to a .txt file called `log.txt`.
 
 #### Screenshots
+
+###### Concert-This:
+
+![concert-this](images/concert-this.jpg)
+
+
 
 
