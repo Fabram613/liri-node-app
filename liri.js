@@ -138,7 +138,7 @@ function spotifyThis() {
   //Store the song title as a parameter for the search:
   var params = songTitle;
 
-  //Search Spotify api
+  //Search Spotify API
   spotify.search({ type: "track", query: params }, function (err, data) {
     //If there is an error, log the error
     if (err) {
@@ -194,30 +194,29 @@ function movieThis() {
     .get(queryUrl)
     .then(function (response) {
       if (response.data.Title != undefined) {
-      
-      //Console.log the movie information
-      var output =
-        " ---- You searched for: " +
-        params.toUpperCase() +
-        " ----" +
-        "\n   Movie Title: " +
-        response.data.Title +
-        "\n   Release Year: " +
-        response.data.Year +
-        "\n   IMDB Rating: " +
-        response.data.Ratings[0].Value +
-        "\n   Rotten Tomatoes Rating: " +
-        response.data.Ratings[1].Value +
-        "\n   Production Country: " +
-        response.data.Country +
-        "\n   Language: " +
-        response.data.Language +
-        "\n   Plot: " +
-        response.data.Plot +
-        "\n   Actors: " +
-        response.data.Actors +
-        "\n --------------------------------" +
-        "\n";
+        //Console.log the movie information
+        var output =
+          " ---- You searched for: " +
+          params.toUpperCase() +
+          " ----" +
+          "\n   Movie Title: " +
+          response.data.Title +
+          "\n   Release Year: " +
+          response.data.Year +
+          "\n   IMDB Rating: " +
+          response.data.Ratings[0].Value +
+          "\n   Rotten Tomatoes Rating: " +
+          response.data.Ratings[1].Value +
+          "\n   Production Country: " +
+          response.data.Country +
+          "\n   Language: " +
+          response.data.Language +
+          "\n   Plot: " +
+          response.data.Plot +
+          "\n   Actors: " +
+          response.data.Actors +
+          "\n --------------------------------" +
+          "\n";
 
         console.log(output);
 
@@ -248,7 +247,7 @@ function doWhatItSays() {
       //Use the new variables to run the same switch statement and call all functions as above
       //Switch statement that calls each function depending on user input
       switch (randomInputCommand) {
-        //Option 1: node liri.js my-tweets
+        //Option 1: node liri.js concert-this
         case "concert-this":
           //Call Function for generating
           concertThis();
@@ -275,7 +274,7 @@ function doWhatItSays() {
           console.log(
             "\n ==== THAT IS NOT A VALID COMMAND ====" +
               "\n PLEASE RUN ONE OF THE COMMANDS BELOW:" +
-              "\n node liri.js my-tweets" +
+              "\n node liri.js concert-this" +
               '\n node liri.js spotify-this-song "any song name"' +
               '\n node liri.js movie-this "any movie name"' +
               "\n node liri.js do-what-it-says" +
