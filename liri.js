@@ -220,7 +220,7 @@
 						case "spotify-this-song":
 							//Call Function for generating song info from Spotify API
 							//User Input for song and movie titles
-							inputTitles = randomInputTitle;
+							inputTitle = randomInputTitle;
 							spotifyThis();
 							break;
 
@@ -228,7 +228,7 @@
 						case "movie-this":
 							//Call Function for generating movie info from OMDB API
 							//User Input for song and movie titles
-							inputTitles = randomInputTitle;
+							inputTitle = randomInputTitle;
 							movieThis();
 							break;
 
