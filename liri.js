@@ -114,6 +114,7 @@ function concertThis() {
       console.log(error);
     });
 }
+
 //spotifyThis Function
 function spotifyThis() {
   //Logging a separator to place the results under
@@ -189,45 +190,46 @@ function movieThis() {
   var params = movieTitle;
 
   //Use Axios to retrieve the information from OMDB API
-  axios.get(queryUrl).then(function (error, response, body) {
-    //If there is no error, return information
-    if (!error && response.statusCode == 200) {
-      //Parse JSON data into new Variable
-      var data = JSON.parse(body);
-
+  axios
+    .get(queryUrl)
+    .then(function (response) {
+      if (response.data.Title != undefined) {
+      
       //Console.log the movie information
       var output =
         " ---- You searched for: " +
         params.toUpperCase() +
         " ----" +
         "\n   Movie Title: " +
-        data.Title +
+        response.data.Title +
         "\n   Release Year: " +
-        data.Year +
+        response.data.Year +
         "\n   IMDB Rating: " +
-        data.Ratings[0].Value +
+        response.data.Ratings[0].Value +
         "\n   Rotten Tomatoes Rating: " +
-        data.Ratings[1].Value +
+        response.data.Ratings[1].Value +
         "\n   Production Country: " +
-        data.Country +
+        response.data.Country +
         "\n   Language: " +
-        data.Language +
+        response.data.Language +
         "\n   Plot: " +
-        data.Plot +
+        response.data.Plot +
         "\n   Actors: " +
-        data.Actors +
+        response.data.Actors +
         "\n --------------------------------" +
         "\n";
 
-      console.log(output);
+        console.log(output);
 
-      //BONUS Append data to log.txt file
-      appendToLogFile(output);
-    } else {
-      console.log("error:", error); // Print the error if one occurred
-      return;
-    }
-  });
+        //BONUS Append data to log.txt file
+        appendToLogFile(output);
+      } else {
+        console.log("No Results Found!");
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 //doWhatItSays Function
@@ -289,6 +291,7 @@ function doWhatItSays() {
 // =====
 // BONUS
 // =====
+
 //Function that appends data to a log file
 function appendToLogFile(data) {
   //Add data
